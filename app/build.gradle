@@ -1,0 +1,86 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs'
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.bobijovz.weather"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation app_dependencies.kotlin_jre
+    implementation app_dependencies.android.appcompat
+    implementation app_dependencies.android.core_ktx
+    implementation app_dependencies.android.constraint_layout
+    implementation app_dependencies.android.material
+
+
+    //navigation
+    implementation app_dependencies.navigation.runtime_ktx
+    implementation app_dependencies.navigation.fragment_ktx
+    implementation app_dependencies.navigation.ui_ktx
+
+    //room
+    implementation app_dependencies.android.room
+    implementation app_dependencies.android.legacy
+    implementation app_dependencies.android.lifecycle_extensions
+    implementation app_dependencies.android.lifecycle_viewmodel
+    kapt app_dependencies.android.kapt_lifecycle_compiler
+    kapt app_dependencies.android.room_compiler
+
+    //gson
+    implementation app_dependencies.google.gson
+    implementation app_dependencies.google.dagger
+    kapt app_dependencies.google.kapt_dagger_compiler
+    implementation app_dependencies.google.dagger_android
+    implementation app_dependencies.google.dagger_android_support
+    kapt app_dependencies.google.kapt_dagger_android_processor
+
+    //Kotlin Android Coroutines
+    implementation app_dependencies.github.coroutines
+    implementation app_dependencies.github.coroutines_android
+    implementation app_dependencies.github.retrofit_adapter
+
+    //
+    implementation app_dependencies.github.zoned_date_time
+
+    //test dependencies
+    implementation app_dependencies.test.junit
+    implementation app_dependencies.test.mockito
+    implementation app_dependencies.test.kotlin_junit
+    implementation app_dependencies.test.test_runner
+    implementation app_dependencies.test.test_rules
+
+
+}

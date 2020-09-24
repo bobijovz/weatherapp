@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/destinationWeatherList">
+
+    <fragment
+        android:id="@+id/destinationWeatherList"
+        android:name="com.bobijovz.weather.presentation.ui.list.WeatherListFragment"
+        android:label="Weather Forecast Details" >
+        <action
+            android:id="@+id/action_destinationWeatherList_to_destinationWeatherDetails"
+            app:destination="@id/destinationWeatherDetails" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/destinationWeatherDetails"
+        android:name="com.bobijovz.weather.presentation.ui.details.WeatherDetailsFragment"
+        android:label="Weather Forecast" >
+        <argument
+            android:name="cityId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+
+</navigation>
